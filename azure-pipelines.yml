@@ -8,7 +8,7 @@ steps:
 
 - task: Maven@4
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: 'OneDrive/Desktop/DevOpsFinalLab/DevOpsFinalLab/pom.xml'
     goals: 'clean package'
     javaHomeOption: 'Path'
     jdkDirectory: 'C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot'
