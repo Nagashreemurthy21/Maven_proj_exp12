@@ -5,10 +5,14 @@ pool:
   name: NagashreeAgent
 
 steps:
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'clean package'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    mavenVersionOption: 'Default'
 
 - script: |
     echo "Simulating deployment..."
