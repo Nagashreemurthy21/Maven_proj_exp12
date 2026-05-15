@@ -7,6 +7,7 @@ pool:
 steps:
 
 - task: Maven@4
+  displayName: 'Build Maven Project'
   inputs:
     mavenPomFile: 'OneDrive/Desktop/DevOpsFinalLab/DevOpsFinalLab/pom.xml'
     goals: 'clean package'
@@ -18,12 +19,11 @@ steps:
 - script: |
     echo "Simulating deployment..."
     mkdir deployed
-    dir target
-    copy target\*.jar deployed\
+    xcopy target deployed /E /I
     echo "Deployment successful!"
   displayName: 'Simulate Deployment'
 
 - script: |
-    echo "Running the JAR file..."
-    java -jar deployed\*.jar
+    echo "Running Application..."
+    dir deployed
   displayName: 'Run Application'
