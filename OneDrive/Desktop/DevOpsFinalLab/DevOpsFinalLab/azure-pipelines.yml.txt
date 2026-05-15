@@ -7,7 +7,10 @@ pool:
 steps:
 
 - task: Maven@4
+<<<<<<< HEAD
   displayName: 'Build Maven Project'
+=======
+>>>>>>> 292d439c816d98927d57136add2666fb786f60df
   inputs:
     mavenPomFile: 'OneDrive/Desktop/DevOpsFinalLab/DevOpsFinalLab/pom.xml'
     goals: 'clean package'
@@ -24,6 +27,12 @@ steps:
   displayName: 'Simulate Deployment'
 
 - script: |
+<<<<<<< HEAD
     echo "Running Application..."
     dir deployed
   displayName: 'Run Application'
+=======
+    echo "Running the JAR file..."
+    java -jar deployed\*.jar
+  displayName: 'Run Application'
+>>>>>>> 292d439c816d98927d57136add2666fb786f60df

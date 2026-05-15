@@ -5,14 +5,20 @@ pool:
   name: NagashreeAgent
 
 steps:
-- task: Maven@3
+
+- task: Maven@4
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: 'OneDrive/Desktop/DevOpsFinalLab/DevOpsFinalLab/pom.xml'
     goals: 'clean package'
+    javaHomeOption: 'Path'
+    jdkDirectory: 'C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot'
+    mavenVersionOption: 'Path'
+    mavenDirectory: 'C:\Program Files\apache-maven-3.9.15-bin\apache-maven-3.9.15'
 
 - script: |
     echo "Simulating deployment..."
     mkdir deployed
+    dir target
     copy target\*.jar deployed\
     echo "Deployment successful!"
   displayName: 'Simulate Deployment'
