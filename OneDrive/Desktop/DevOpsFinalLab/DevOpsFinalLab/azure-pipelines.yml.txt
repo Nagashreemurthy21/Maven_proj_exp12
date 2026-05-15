@@ -6,22 +6,24 @@ pool:
 
 steps:
 
-- task: Maven@3
+- task: Maven@4
+  displayName: 'Build Maven Project'
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: 'OneDrive/Desktop/DevOpsFinalLab/DevOpsFinalLab/pom.xml'
     goals: 'clean package'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.17'
-    mavenVersionOption: 'Default'
+    javaHomeOption: 'Path'
+    jdkDirectory: 'C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot'
+    mavenVersionOption: 'Path'
+    mavenDirectory: 'C:\Program Files\apache-maven-3.9.15-bin\apache-maven-3.9.15'
 
 - script: |
     echo "Simulating deployment..."
     mkdir deployed
-    copy target\*.jar deployed\
+    xcopy target deployed /E /I
     echo "Deployment successful!"
   displayName: 'Simulate Deployment'
 
 - script: |
-    echo "Running the JAR file..."
-    java -jar deployed\*.jar
+    echo "Running Application..."
+    dir deployed
   displayName: 'Run Application'
